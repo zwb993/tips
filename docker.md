@@ -16,3 +16,10 @@ docker cp container_name:/filepath/(filename) /宿主机filepath
 从宿主机拷贝到容器
 ```bash
 docker cp /宿主机filepath container_name:/filepath/(filename) 
+```
+
+### 启动容器并进入容器
+```bash
+docker start container_name
+docker attach container_name
+```
