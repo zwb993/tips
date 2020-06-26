@@ -6,6 +6,8 @@
 
 2. 下载package.box，[官方路径](http://www.vagrantbox.es/)
 
+   目前下载的是[generic/centos7](https://app.vagrantup.com/generic/boxes/centos7/versions/v3.0.8/providers/virtualbox.box)
+
 3. 将box加入vagrant中
 
    ```powershell
@@ -25,7 +27,7 @@
    ```
 
    之后在该目录下会生成VagrantFile, 启动虚拟机。
-   
+
    如果有错误可以参考[文章](https://blog.csdn.net/u011781521/article/details/80275212)
 
 5. **vagrant 命令大全**

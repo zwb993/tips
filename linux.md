@@ -6,8 +6,9 @@
 
 ```bash
 curl -O -L https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.2.tar.gz	#安装ruby,版本要求大于2.3
+yum install openssl-devel -y
 tar xf ruby-2.3.2.tar.gz
-cd ruby-2.3.2.tar.gz
+cd ruby-2.3.2
 ./configure --prefix=/usr/local/ruby-2.3.2
 make && make install
 ln -s /usr/local/ruby-2.3.2/bin/ruby /usr/bin/ruby	#创建软链接
@@ -23,7 +24,7 @@ ruby -v
 更换ruby仓库源
 
 ``` bash
-gem sources –a http://mirrors.aliyun.com/rubygems/
+gem sources -a http://mirrors.aliyun.com/rubygems/
 gem sources --remove http://rubygems.org/
 ```
 
@@ -127,6 +128,53 @@ WantedBy=multi-user.target
 systemctl start nginx
 systemctl enable nginx
 ```
+
+
+
+## 防火墙
+
+### iptables 
+
+```bash
+service iptables status  	# 查看防火墙状态
+service iptables stop 		# 停止防火墙
+service iptables start 		# 启动防火墙
+service iptables restart 	# 重启防火墙
+chkconfig iptables off 		# 永久关闭防火墙
+chkconfig iptables on　　		# 永久关闭后重启
+
+#开启80端口
+vim /etc/sysconfig/iptables
+# 加入如下代码
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+#保存退出后重启防火墙
+service iptables restart
+```
+
+### firewall 
+
+firewall 是centos7里面的新的防火墙命令，它底层还是使用 iptables 对内核命令动态通信包过滤的，简单理解就是firewall是centos7下管理iptables的新命令
+
+```bash
+systemctl status firewalld		#查看firewall服务状态
+firewall-cmd --state			#查看firewall的状态
+service firewalld start			# 开启
+service firewalld restart		# 重启
+service firewalld stop			# 关闭
+firewall-cmd --list-all			#查看防火墙规则
+firewall-cmd --list-ports		#查看防火墙开放端口
+
+firewall-cmd --query-port=8080/tcp					# 查询端口是否开放
+firewall-cmd --permanent --add-port=80/tcp			# 开放80端口
+firewall-cmd --permanent --remove-port=8080/tcp		# 移除端口
+firewall-cmd --reload								#重启防火墙(修改配置后要重启防火墙)
+# 参数解释
+1、firwall-cmd：是Linux提供的操作firewall的一个工具；
+2、--permanent：表示设置为持久；
+3、--add-port：标识添加的端口；
+```
+
+
 
 
 
