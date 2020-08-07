@@ -32,7 +32,7 @@ gem sources --remove http://rubygems.org/
 
 ``` bash
 gem install fpm 							#或者 -v 1.4.0 指定安装版本
-find ~/ -type f -name 'fpm' -executable		#安装后如果还是无法找到fpm命令，执行这个命令找到fpm路径并创建链接以直接执行
+find / -type f -name 'fpm' -executable		#安装后如果还是无法找到fpm命令，执行这个命令找到fpm路径并创建链接以直接执行
 ```
 
 
@@ -43,7 +43,7 @@ find ~/ -type f -name 'fpm' -executable		#安装后如果还是无法找到fpm�
 wget http://nginx.org/download/nginx-1.6.3.tar.gz		#获取安装包
 sed -i 's#keepcache=0#keepcache=1#g' /etc/yum.conf		#设置yum安装的包都会保存在本地
 find /var/cache/ -type f -name "*rpm" | xargs rm 		#先删除本地rpm包
-yum install pcre-devel openssl-devel –y					#安装nginx依赖
+yum install pcre-devel openssl-devel -y					#安装nginx依赖
 find /var/cache/ -type f -name "*rpm"|xargs cp -t /tmp/ #找到依赖包并拷贝到别的目录
 cd /tmp/ && tar zcf nginx_yum.tar.gz *.rpm				#将依赖打包成tar包
 ```
@@ -173,8 +173,6 @@ firewall-cmd --reload								#重启防火墙(修改配置后要重启防火墙)
 2、--permanent：表示设置为持久；
 3、--add-port：标识添加的端口；
 ```
-
-
 
 
 

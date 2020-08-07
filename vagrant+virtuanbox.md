@@ -6,7 +6,7 @@
 
 2. 下载package.box，[官方路径](http://www.vagrantbox.es/)
 
-   目前下载的是[generic/centos7](https://app.vagrantup.com/generic/boxes/centos7/versions/v3.0.8/providers/virtualbox.box)
+   目前下载的是[generic/centos7](https://app.vagrantup.com/generic/boxes/centos7/versions/3.0.8/providers/virtualbox.box)
 
 3. 将box加入vagrant中
 
