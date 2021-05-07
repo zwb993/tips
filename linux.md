@@ -176,5 +176,11 @@ firewall-cmd --reload								#重启防火墙(修改配置后要重启防火墙)
 
 
 
+### systemd
 
+#### journal
+
+日志存放地址：/run/log/journal/
+
+设置日志保存时长（两天）：journalctl --vacuum-time=2d，具体可参考man journalctl
 
